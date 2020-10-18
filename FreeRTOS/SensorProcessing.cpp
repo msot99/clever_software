@@ -1,5 +1,5 @@
 
-#include "SensorMath.h"
+#include "SensorProcessing.h"
 #include "SensorIO.h"
 
 // Period to poll sensors in micros
@@ -8,18 +8,30 @@
 // Task to Run the display
 void taskProcessSensors(void *pvParameters)
 {
-  //Configure SensorIO which will read sensors and send data over.
-  hw_timer_t *sensorTimer = configureSensorTimer(SENSOR_READ_PERIOD);
-  UBaseType_t uxHighWaterMark;
 
   //TODO Sensor configuration
 
-  for (;;)
-  {
-    Serial.println(uxTaskGetStackHighWaterMark(NULL));
-    //Semaphore to wait on timer
-    xSemaphoreTake(sensorTimerSemaphore, portMAX_DELAY);
+  //Configure SensorIO which will read sensors and send data over.
+  hw_timer_t *sensorTimer = configureSensorTimer(SENSOR_READ_PERIOD);
 
-    // TODO Add sensor polling.
+  // Loop to repeat processing data endlessly.
+  while (1)
+  {
+    // Loop to read a sensor a certian number of time before processing it.
+    for (int i = 0; i < 1; i++)
+    {
+
+      //Semaphore to wait on timer
+      xSemaphoreTake(sensorTimerSemaphore, portMAX_DELAY);
+
+      xSemaphoreTake(sensorVarSemaphore);
+
+      // TODO Copy Sensor Data
+
+      xSemaphoreGive(sensorVarSemaphore);
+    }
+
+    //Process Data after a certian number of sensors are read.
+    //TODO add sensor processing
   }
 }

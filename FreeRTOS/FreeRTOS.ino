@@ -1,6 +1,6 @@
 
 #include "DisplayTask.h"
-#include "SensorTask.h"
+#include "SensorProcessing.h"
 
 void setup()
 {
@@ -10,8 +10,8 @@ void setup()
 
     // Now set up two tasks to run independently.
     xTaskCreatePinnedToCore(
-      taskReadSensors
-      ,  "taskReadSensors"   // A name just for humans
+      taskProcessSensors
+      ,  "taskProcessSensors"   // A name just for humans
       ,  8000 // This stack size can be checked & adjusted by reading the Stack Highwater
       ,  NULL
       ,  2  // Priority
