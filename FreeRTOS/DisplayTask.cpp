@@ -5,7 +5,7 @@
 
 //Project imports
 #include "DisplayTask.h"
-#include "Clever_Interrupts.h"
+#include "TouchInterrupts.h"
 
 SSD_13XX disp = SSD_13XX(_cs, _dc);
 
@@ -35,11 +35,11 @@ void taskDisplay(void *pvParameters)
 
     /* Inspect our own high water mark on entering the task. */
     uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
-    Serial.println(uxHighWaterMark);
+//    Serial.println(uxHighWaterMark);
 
     for (;;)
     {
-        //    xSemaphoreTake(xTouchSemaphore, portMAX_DELAY);
+            xSemaphoreTake(xTouchSemaphore, portMAX_DELAY);
 
         disp.setCursor(0, 0);
         if (leftTouchDetected)

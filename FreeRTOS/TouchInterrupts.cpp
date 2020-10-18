@@ -1,4 +1,4 @@
-#include "CleverInterrupts.h"
+#include "TouchInterrupts.h"
 
 bool leftTouchDetected = false;
 bool rightTouchDetected = false;
