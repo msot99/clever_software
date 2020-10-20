@@ -37,12 +37,12 @@ void taskProcessSensors(void *pvParameters)
 
       xSemaphoreTake(sensorVarSemaphore);
 
-      // TODO Copy Sensor Data
+      // TODO6 Copy Sensor Data
 
       xSemaphoreGive(sensorVarSemaphore);
     }
 
     //Process Data after a certian number of sensors are read.
-    //TODO add sensor processing
+    //TODO7 add sensor processing
   }
 }

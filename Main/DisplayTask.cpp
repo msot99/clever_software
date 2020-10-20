@@ -21,7 +21,7 @@ SSD_13XX disp = SSD_13XX(_cs, _dc);
 
 //// Function to initialize the display.
 //void buildDisplay(){
-//  //TODO Build display
+//  //TODO1 Build display
 //}
 
 void printToDisplay(String to_print)
@@ -49,6 +49,7 @@ void taskDisplay(void *pvParameters)
 
     for (;;)
     {
+        //TODO2 Add Display manipulation
         xSemaphoreTake(xTouchSemaphore, portMAX_DELAY);
 
         disp.setCursor(0, 0);

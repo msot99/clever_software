@@ -18,7 +18,7 @@ extern SemaphoreHandle_t sensorTimerSemaphore;
 extern SemaphoreHandle_t sensorVarSemaphore;
 
 //Sensor Variables
-//TODO add sensor ISR storage
+//TODO5 Add sensor declariations
 
 hw_timer_t *configureSensorTimer(uint64_t micro);
 void IRAM_ATTR SensorTimerInterrupt();

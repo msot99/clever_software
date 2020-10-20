@@ -12,7 +12,7 @@ Operational Status : Under Development
 #include "SensorIO.h"
 
 // Sensor variables
-// TODO Add decleration
+// TODO3 Add decleration
 
 // Timer Object
 hw_timer_t *timer = NULL;
@@ -39,7 +39,7 @@ void IRAM_ATTR SensorTimerInterrupt()
 
   //-----------Read Sensor Data
   xSemaphoreTakeFromISR(sensorVarSemaphore);
-  // TODO Add sensor polling.
+  // TODO4 Add sensor polling.
 
   xSemaphoreGiveFromISR(sensorVarSemaphore);
 
