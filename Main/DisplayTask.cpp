@@ -1,5 +1,15 @@
+/*
+Developer 1 name : Jesse McDonald
+Course : ENGR 2704
+Project : CLEVER
+File name : DisplayTask.cpp
+Target Machine : ESP32
+Operating System : freeRTOS
+Integrated Development Environment(IDE) : Visual Studio Code and Arduino
+Language : C++
+Operational Status : Under Development
+*/
 
-//
 #include <SPI.h>
 #include <SSD_13XX.h>
 
@@ -35,11 +45,11 @@ void taskDisplay(void *pvParameters)
 
     /* Inspect our own high water mark on entering the task. */
     uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
-//    Serial.println(uxHighWaterMark);
+    //    Serial.println(uxHighWaterMark);
 
     for (;;)
     {
-            xSemaphoreTake(xTouchSemaphore, portMAX_DELAY);
+        xSemaphoreTake(xTouchSemaphore, portMAX_DELAY);
 
         disp.setCursor(0, 0);
         if (leftTouchDetected)
