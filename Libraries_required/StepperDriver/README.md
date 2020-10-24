@@ -121,4 +121,4 @@ Hardware
 - Arduino-compatible board
 - A <a href="https://www.pololu.com/category/120/stepper-motor-drivers">stepper motor driver</a>, for example DRV8834, DRV8825, DRV8824, A4988.
 - A <a href="http://www.circuitspecialists.com/stepper-motor">Stepper Motor</a>.
-- 1 x 100uF capacitor
+- 1 x 100uF capacitor (meh)
