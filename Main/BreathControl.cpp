@@ -10,6 +10,18 @@ Language : C++
 Operational Status : Under Development
 */
 #include BreathControl.h
+#include Arduino.h
+#include Wire.h
+#include BasicStepperDriver.h
+
+//Initiate motor
+#define MOTOR_STEPS 200
+#define MICROSTEPS 1
+#define DIR 23
+#define STEP 24
+
+BasicStepperDriver stepper(MOTOR_STEPS, DIR, STEP);
+stepper.begin(RPM, MICROSTEPS);
 
 //Variables for breathing
 int breathsPerMin = 20;
