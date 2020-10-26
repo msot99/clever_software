@@ -10,7 +10,6 @@ Language : C++
 Operational Status : Under Development
 */
 #include BreathControl.h
-#include Arduino.h
 #include Wire.h
 #include BasicStepperDriver.h
 
