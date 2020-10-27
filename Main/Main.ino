@@ -20,14 +20,14 @@ void setup()
   Serial.begin(115200);
 
   // Now set up two tasks to run independently.
-  xTaskCreatePinnedToCore(
-      taskProcessSensors, "taskProcessSensors" // A name just for humans
-      ,
-      8000 // This stack size can be checked & adjusted by reading the Stack Highwater
-      ,
-      NULL, 2 // Priority
-      ,
-      NULL, 1); // Core used
+//  xTaskCreatePinnedToCore(
+//      taskProcessSensors, "taskProcessSensors" // A name just for humans
+//      ,
+//      8000 // This stack size can be checked & adjusted by reading the Stack Highwater
+//      ,
+//      NULL, 2 // Priority
+//      ,
+//      NULL, 1); // Core used
 
   xTaskCreatePinnedToCore(
       taskDisplay, "taskDisplay",

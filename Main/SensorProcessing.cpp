@@ -35,7 +35,7 @@ void taskProcessSensors(void *pvParameters)
       //Semaphore to wait on timer
       xSemaphoreTake(sensorTimerSemaphore, portMAX_DELAY);
 
-      xSemaphoreTake(sensorVarSemaphore);
+      xSemaphoreTake(sensorVarSemaphore, portMAX_DELAY);
 
       // TODO6 Copy Sensor Data
 

@@ -38,10 +38,10 @@ void IRAM_ATTR SensorTimerInterrupt()
 {
 
   //-----------Read Sensor Data
-  xSemaphoreTakeFromISR(sensorVarSemaphore);
+  xSemaphoreTakeFromISR(sensorVarSemaphore,NULL);
   // TODO4 Add sensor polling.
 
-  xSemaphoreGiveFromISR(sensorVarSemaphore);
+  xSemaphoreGiveFromISR(sensorVarSemaphore, NULL);
 
   //-----------Send Semaphore to task
   BaseType_t woken = pdFALSE;

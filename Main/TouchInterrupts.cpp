@@ -34,30 +34,35 @@ void interruptsInit()
 // Handlers for touch interface interrupts
 void gotTouchLeft()
 {
+  touch_pad_intr_disable();
   leftTouchDetected = true;
   xSemaphoreGive(xTouchSemaphore);
 }
 
 void gotTouchRight()
 {
+  touch_pad_intr_disable();
   rightTouchDetected = true;
   xSemaphoreGive(xTouchSemaphore);
 }
 
 void gotTouchUp()
 {
+  touch_pad_intr_disable();
   upTouchDetected = true;
   xSemaphoreGive(xTouchSemaphore);
 }
 
 void gotTouchDown()
 {
+  touch_pad_intr_disable();
   downTouchDetected = true;
   xSemaphoreGive(xTouchSemaphore);
 }
 
 void gotTouchCenter()
 {
+  touch_pad_intr_disable();
   centerTouchDetected = true;
   xSemaphoreGive(xTouchSemaphore);
 }

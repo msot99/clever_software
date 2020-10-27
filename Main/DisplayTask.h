@@ -10,6 +10,9 @@ Language : C++
 Operational Status : Under Development
 */
 #include <Arduino.h>
+#include <SPI.h>
+#include <SSD_13XX.h>
+#include "TouchInterrupts.h"
 
 //Pinout for Waveshare 1.5inch RGB OLED Display
 #define _cs 17   // goes to disp CS
@@ -20,3 +23,14 @@ Operational Status : Under Development
 #define _miso    // Not connected
 
 void taskDisplay(void *pvParameter);
+void updateDisplay();
+void printToDisplay(String to_print);
+
+// Struct for displaydata
+struct displayData
+{
+    uint16_t color = WHITE;
+    short value = 000;
+    bool selected = false;
+    String what = "";
+};

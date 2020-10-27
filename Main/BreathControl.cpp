@@ -9,24 +9,24 @@ Integrated Development Environment(IDE) : Visual Studio Code and Arduino
 Language : C++
 Operational Status : Under Development
 */
-#include BreathControl.h
+#include "BreathControl.h"
 
 //Variables for breathing
 int breathsPerMin = 20;
 
-// Ventilator Targets
-enum targets
-{
-    Volume,
-    Pressure
-} target;
-
-// Ventilator Modes
-enum modes
-{
-    Support,
-    Control
-} mode;
+//// Ventilator Targets
+//enum targets
+//{
+//    Volume,
+//    Pressure
+//} target;
+//
+//// Ventilator Modes
+//enum modes
+//{
+//    Support,
+//    Control
+//} mode;
 
 // Function for performing support breathing
 void supportBreathing()
@@ -61,7 +61,7 @@ void controlBreathing()
 }
 
 // Task to Run the display
-void taskProcessSensors(void *pvParameters)
+void taskBreath(void *pvParameters)
 {
     // Loop to repeat processing data endlessly.
     while (1)

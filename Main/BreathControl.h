@@ -14,6 +14,14 @@ Operational Status : Under Development
 
 extern int breathsPerMin;
 
-extern enum targets;
-extern enum modes;
+//extern enum targets
+//{
+//    Volume,
+//    Pressure
+//} target;
+//enum modes
+//{
+//    Support,
+//    Control
+//} mode;
 float ratio = 2;
