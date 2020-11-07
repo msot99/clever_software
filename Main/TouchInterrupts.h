@@ -11,7 +11,9 @@ Operational Status : Under Development
 */
 #include "Arduino.h"
 
-#define touchThreshold 40
+
+
+#define touchThreshold 20
 
 extern SemaphoreHandle_t xTouchSemaphore;
 

@@ -23,11 +23,11 @@ SemaphoreHandle_t xTouchSemaphore = xSemaphoreCreateBinary();
 //Attaches interrupts to the the touch pins
 void interruptsInit()
 {
-  touchAttachInterrupt(T8, gotTouchLeft, touchThreshold);
-  touchAttachInterrupt(T7, gotTouchRight, touchThreshold);
+  touchAttachInterrupt(T9, gotTouchLeft, touchThreshold);
+  touchAttachInterrupt(T6, gotTouchRight, touchThreshold);
   touchAttachInterrupt(T5, gotTouchDown, touchThreshold);
-  touchAttachInterrupt(T9, gotTouchUp, touchThreshold);
-  touchAttachInterrupt(T6, gotTouchCenter, touchThreshold);
+  touchAttachInterrupt(T8, gotTouchUp, touchThreshold);
+  touchAttachInterrupt(T7, gotTouchCenter, touchThreshold);
   xTouchSemaphore = xSemaphoreCreateBinary();
 }
 
@@ -37,6 +37,8 @@ void gotTouchLeft()
   touch_pad_intr_disable();
   leftTouchDetected = true;
   xSemaphoreGive(xTouchSemaphore);
+  
+
 }
 
 void gotTouchRight()
@@ -44,6 +46,8 @@ void gotTouchRight()
   touch_pad_intr_disable();
   rightTouchDetected = true;
   xSemaphoreGive(xTouchSemaphore);
+ 
+  
 }
 
 void gotTouchUp()

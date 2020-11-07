@@ -36,9 +36,7 @@ byte readLED = 13;  //Blinks with each data read
 int HR_SPO2();
 
 // TODO3 Add decleration
-//Initialize HR LEDS
-pinMode(pulseLED, OUTPUT);
-pinMode(readLED, OUTPUT);
+
 
 //Settings for HR sensor
 byte ledBrightness = 60; //Options: 0=Off to 255=50mA
@@ -48,8 +46,6 @@ byte sampleRate = 100;   //Options: 50, 100, 200, 400, 800, 1000, 1600, 3200
 int pulseWidth = 411;    //Options: 69, 118, 215, 411
 int adcRange = 4096;     //Options: 2048, 4096, 8192, 16384
 
-//Intialize HR Sensor
-particleSensor.setup(ledBrightness, sampleAverage, ledMode, sampleRate, pulseWidth, adcRange);
 
 // Timer Object
 hw_timer_t *timer = NULL;
@@ -57,6 +53,15 @@ hw_timer_t *timer = NULL;
 // Semaphore Objects
 SemaphoreHandle_t sensorTimerSemaphore = NULL;
 SemaphoreHandle_t sensorVarSemaphore = NULL;
+
+void sensorConfiguration(){
+  //Initialize HR LEDS
+  pinMode(pulseLED, OUTPUT);
+  pinMode(readLED, OUTPUT);
+  //Intialize HR Sensor
+  particleSensor.setup(ledBrightness, sampleAverage, ledMode, sampleRate, pulseWidth, adcRange);
+}
+
 
 hw_timer_t *configureSensorTimer(uint64_t micro)
 {
@@ -92,7 +97,7 @@ void IRAM_ATTR SensorTimerInterrupt()
   //calculate heart rate and SpO2 after first 100 samples (first 4 seconds of samples)
   maxim_heart_rate_and_oxygen_saturation(irBuffer, bufferLength, redBuffer, &spo2, &validSPO2, &heartRate, &validHeartRate);
 
-  xSemaphoreTakeFromISR(sensorVarSemaphore);
+//  xSemaphoreTakeFromISR(sensorVarSemaphore);
   // TODO4 Add sensor polling.
 
   xSemaphoreGiveFromISR(sensorVarSemaphore, NULL);

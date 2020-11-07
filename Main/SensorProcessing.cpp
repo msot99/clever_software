@@ -21,7 +21,7 @@ void taskProcessSensors(void *pvParameters)
 {
 
   //TODO Sensor configuration
-
+  sensorConfiguration();
   //Configure SensorIO which will read sensors and send data over.
   hw_timer_t *sensorTimer = configureSensorTimer(SENSOR_READ_PERIOD);
 

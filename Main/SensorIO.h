@@ -22,3 +22,4 @@ extern SemaphoreHandle_t sensorVarSemaphore;
 
 hw_timer_t *configureSensorTimer(uint64_t micro);
 void IRAM_ATTR SensorTimerInterrupt();
+void sensorConfiguration();

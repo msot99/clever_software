@@ -41,10 +41,10 @@ void updateDisplay()
     short textHeight = 29;
     short firstRowHeight = 0;
     short secondRowHeight = firstRowHeight + bufh * 2 + textHeight + wid;
-
+    
     for (int i = 0; i < 3; i++)
     {
-
+        Serial.println(data[0][i].color);    
         // Create rows of squares
         disp.drawRect(bufw * (i + 1) + wid * i, firstRowHeight, wid, wid, data[0][i].color, data[0][i].color, false);
         disp.drawRect(bufw * (i + 1) + wid * i, secondRowHeight, wid, wid, 15000, 45000, false);
@@ -65,7 +65,7 @@ void updateDisplay()
         disp.setCursor(bufw * (i + 1) + wid * i + 8, firstRowHeight + 10);
         printToDisplay(String(124));
         disp.setCursor(bufw * (i + 1) + wid * i + 8, secondRowHeight + 10);
-        printToDisplay(String(124));
+        printToDisplay(String(104));
     }
 }
 
@@ -104,7 +104,7 @@ void taskDisplay(void *pvParameters)
         //TODO2 Add Display manipulation
         xSemaphoreTake(xTouchSemaphore, portMAX_DELAY);
         uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
-
+        Serial.println("TOUCH");
         if (leftTouchDetected)
         {
             leftTouchDetected = false;
@@ -113,6 +113,8 @@ void taskDisplay(void *pvParameters)
                 data[0][selected].color = WHITE;
                 selected--;
                 data[0][selected].color = RED;
+                Serial.println("Update Display");
+            
                 updateDisplay();
             }
             Serial.print("Left");
@@ -139,20 +141,24 @@ void taskDisplay(void *pvParameters)
 
         if (upTouchDetected)
         {
+          Serial.print("up");
             //            printToDisplay("up_pushed");
             upTouchDetected = false;
         }
 
         if (downTouchDetected)
         {
+          Serial.print("down");
             //            printToDisplay("down_pushed");
             downTouchDetected = false;
         }
         if (centerTouchDetected)
         {
+          Serial.print("center");
             //            printToDisplay("center_pushed");
             centerTouchDetected = false;
         }
+        touch_pad_clear_status();
         touch_pad_intr_enable();
     }
 }
