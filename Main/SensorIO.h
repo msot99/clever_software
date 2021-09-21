@@ -15,7 +15,6 @@ Operational Status : Under Development
 // Timer object and Semaphores
 extern hw_timer_t *timer;
 extern SemaphoreHandle_t sensorTimerSemaphore;
-extern SemaphoreHandle_t sensorVarSemaphore;
 
 //Sensor Variables
 //TODO5 Add sensor declariations

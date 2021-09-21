@@ -17,16 +17,21 @@ bool upTouchDetected = false;
 bool downTouchDetected = false;
 bool centerTouchDetected = false;
 
+// Variable for Threshold
+int touchThreshold = 0;
+
 // Semaphore for touch
-SemaphoreHandle_t xTouchSemaphore = xSemaphoreCreateBinary();
+extern SemaphoreHandle_t xTouchSemaphore = xSemaphoreCreateBinary();
 
 //Attaches interrupts to the the touch pins
 void interruptsInit()
 {
-  touchAttachInterrupt(T9, gotTouchLeft, touchThreshold);
+  vTaskDelay(500/portTICK_PERIOD_MS);
+  touchThreshold = touchRead(T5)-10;
+  touchAttachInterrupt(T8, gotTouchLeft, touchThreshold);
   touchAttachInterrupt(T6, gotTouchRight, touchThreshold);
   touchAttachInterrupt(T5, gotTouchDown, touchThreshold);
-  touchAttachInterrupt(T8, gotTouchUp, touchThreshold);
+  touchAttachInterrupt(T9, gotTouchUp, touchThreshold);
   touchAttachInterrupt(T7, gotTouchCenter, touchThreshold);
   xTouchSemaphore = xSemaphoreCreateBinary();
 }

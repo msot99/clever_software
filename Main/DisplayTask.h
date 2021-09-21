@@ -23,6 +23,7 @@ Operational Status : Under Development
 #define _miso    // Not connected
 
 void taskDisplay(void *pvParameter);
+void taskUpdateDisplay(void *pvParameter);
 void updateDisplay();
 void printToDisplay(String to_print);
 
@@ -30,7 +31,24 @@ void printToDisplay(String to_print);
 struct displayData
 {
     uint16_t color = WHITE;
-    short value = 000;
+    String value = "000";
     bool selected = false;
     String what = "";
+};
+
+//Struct for data shared between controlledBreath task and Display task
+struct fingerData
+{
+    int hr = 0;
+    int o2 = 0;
+};
+
+//Struct for data shared between controlledBreath task and Display task
+struct pumpData
+{
+    int bpm = 5;
+    bool controlledMode = false;
+    int tidalVolume = 0;
+    bool off = false;
+    bool trigger = false;
 };

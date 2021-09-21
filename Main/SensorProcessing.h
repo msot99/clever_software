@@ -12,4 +12,5 @@ Operational Status : Under Development
 
 #include "Arduino.h"
 
-void taskProcessSensors(void *pvParameter);
+void taskPressureSensor(void *pvParameter);
+void taskFingerSensor(void *pvParameters);

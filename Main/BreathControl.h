@@ -11,17 +11,6 @@ Operational Status : Under Development
 */
 
 #include "Arduino.h"
-
-extern int breathsPerMin;
-
-//extern enum targets
-//{
-//    Volume,
-//    Pressure
-//} target;
-//enum modes
-//{
-//    Support,
-//    Control
-//} mode;
-float ratio = 2;
+void taskBreath(void *pvParameters);
+void IRAM_ATTR SensorTime2rInterrupt();
+void taskAlert(void *pvParameters);

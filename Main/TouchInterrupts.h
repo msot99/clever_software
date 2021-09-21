@@ -11,10 +11,6 @@ Operational Status : Under Development
 */
 #include "Arduino.h"
 
-
-
-#define touchThreshold 20
-
 extern SemaphoreHandle_t xTouchSemaphore;
 
 extern bool leftTouchDetected;
